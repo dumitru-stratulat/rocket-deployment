@@ -56,7 +56,6 @@ export default class App extends React.Component {
 
         </NavigationContainer>
         <View>
-          <Text>SpaceX</Text>
         </View>
         {/* <Launches/> */}
       </ApolloProvider>

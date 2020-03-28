@@ -3,7 +3,6 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import LaunchItem from './LaunchItem';
 
-
 import {
     SafeAreaView,
     StyleSheet,
@@ -55,17 +54,14 @@ export default class Launches extends Component {
     render() {
        
         return (
-            <Fragment>
+            <View style={styles.container}>
                 <SafeAreaView/>
-                <Text>Launches</Text>
-                <Button 
-                title="go to launchscreen"
-                onPress={() => this.props.navigation.navigate('LaunchScreen')} />
-                <ScrollView>
+                <Text style={styles.launchesText}>Launches</Text>
+                <ScrollView >
                 <Query query={LAUNCHES_QUERY}  >
                     {
                          ({loading, error, data}) => {
-                            if(loading) return <Text>Loading...</Text>
+                            if(loading) return <Text style={{color: '#FF4701'}}>Loading...</Text>
                             if(error) console.log(error)
 
                             console.log(`return data ${data}`)
@@ -74,7 +70,7 @@ export default class Launches extends Component {
                                 {
                                    data.launches.map((launch, index, ) => (
                                             <View>      
-                                                <LaunchItem key={launch.length} launch={launch} user={data.users[index]} navigation={this.props.navigation} />
+                                                <LaunchItem key={index} launch={launch} user={data.users[index]} navigation={this.props.navigation} />
                                             </View>
                                         ))
                                 }
@@ -82,10 +78,23 @@ export default class Launches extends Component {
                         }
                     }
                 </Query>
+                 <SafeAreaView/>
                 </ScrollView>
-            </Fragment>
+            </View>
         )
     }
 }
+const styles = StyleSheet.create({
+    container:{
+        flex: 1,
+        backgroundColor:'#252A2D'
+    },
+    launchesText: {
+        alignSelf: 'center',
+        color: '#FF4701',
+        fontSize: 18,
+        fontWeight: 'bold'
+    }
+})
 
 
