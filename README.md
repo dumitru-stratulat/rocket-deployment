@@ -1,4 +1,5 @@
 # rocket-deployment
 
-npm install
-pod install
+1)npm install
+2)pod install
+3)npm run server
