@@ -14,8 +14,6 @@ import {
   } from 'react-native';
 import { thisExpression } from '@babel/types';
 
-  
-
 const LAUNCHES_QUERY = gql`
     query LaunchesQuery{
         launches(first: 10){

@@ -15,7 +15,7 @@ import moment from "moment";
 export default function LaunchItem({
     navigation,
     launch: {flight_number, mission_name,launch_success,launch_date_local},
-    user: { id,name,user_name,email,address:{street} }}) {
+    user: { id,name,user_name,email,address:{street,suite,city, geo:{lat,lng}} }}) {
 
     const date = moment(launch_date_local).format("YYYY-MM-DD HH:mm")
 
@@ -31,9 +31,15 @@ export default function LaunchItem({
                     mission_name: mission_name,
                     launch_success:launch_success,
                     launch_date_local:launch_date_local,
+                    id: id,
+                    name: name,
+                    user_name: user_name,
                     street: street,
                     user_name:user_name,
-                    email:email
+                    email:email,
+                    street: street,
+                    suite: suite,
+                    city: city,
                 })}>
                     <Text style={styles.detailsText}>Details</Text>
                 </TouchableOpacity>
